@@ -14,7 +14,7 @@ stage ('Initital Setup') {
 steps {
 
  
-bat label: '', script: 'cd C:\\DOCKER\\MSGFW2.0'
+bat label: '', script: 'cd C:\\DOCKER'
 
  
 }
