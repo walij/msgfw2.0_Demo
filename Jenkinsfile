@@ -27,7 +27,7 @@ stage ('Execution') {
 steps {
 
   dir('C:\\\\DOCKER\\\\MSGFW2.0')
-bat label: '', script: 'docker run --rm -v "C:\\Docker\\TestResults":C:\\app\\msg.Testframework_cs\\TestResults msgfw2.0:test'
+bat label: '', script: 'docker run --rm -v "C:\\Docker\\MSGFW2.0\\Test Results":C:\\app\\msg.Testframework_cs\\TestResults msgfw2.0:test'
 
  
 }
