@@ -8,12 +8,10 @@ pipeline {
            }
 
  
-stage ('Initital Setup') {
-
- 
+stage ('Initital Setup') { 
 steps {
-dir('C:\\\\DOCKER\\\\MSGFW2.0') {
-    bat label: '', script: 'docker build --pull --target testrunner -t msgfw2.0:test .'
+        dir('C:\\\\DOCKER\\\\MSGFW2.0') {
+           bat label: '', script: 'docker build --pull --target testrunner -t msgfw2.0:test .'
 }
  
 
@@ -22,19 +20,13 @@ dir('C:\\\\DOCKER\\\\MSGFW2.0') {
   
 
  
-}
-
- 
-}
-
- 
  
 stage ('Execution') {
 
  
 steps {
 
- 
+  dir('C:\\\\DOCKER\\\\MSGFW2.0')
 bat label: '', script: 'docker run --rm -v "C:\\Docker\\TestResults":C:\\app\\msg.Testframework_cs\\TestResults msgfw2.0:test'
 
  
