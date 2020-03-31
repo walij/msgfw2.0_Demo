@@ -1,12 +1,12 @@
 pipeline {  
   agent any
   stages { 
-          stage ('Clone') {
+          stage ('SCM Check Out') {
                            steps {
                                    git url: 'https://github.com/walij/msgfw2.0_Demo.git'
                                  }
                           }
-          stage ('Initital Setup') { 
+          stage ('Test Bed Set Up') { 
                                      steps {
                                              dir('C:\\\\DOCKER\\\\MSGFW2.0')
                                        {
@@ -15,7 +15,7 @@ pipeline {
                                        }
                                             }
                                     } 
-           stage ('Execution') { 
+           stage ('MSGFW2.0 Unit Test Execution') { 
                                  steps {
                                          dir('C:\\\\DOCKER\\\\MSGFW2.0')
                                    {
