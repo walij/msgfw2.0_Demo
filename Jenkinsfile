@@ -14,7 +14,7 @@ stage ('Initital Setup') {
 steps {
 
  
-bat label: '', script: 'cd C:\\DOCKER'
+bat label: '', script: 'cd C:\\DOCKER\\MSGFW2.0'
 
  
 }
@@ -29,7 +29,7 @@ stage ('Docker Build') {
 steps {
 
  
-bat label: '', script: 'docker build --pull --target testrunner -t msgfw2.0:test .'
+bat label: '', script: 'docker build -f "C:\\DOCKER\\MSGFW2.0\\Dockerfile" --pull --target testrunner -t msgfw2.0:test .'
 
  
 }
