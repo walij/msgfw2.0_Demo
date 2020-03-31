@@ -1,0 +1,20 @@
+pipeline{
+	agent any
+	stages{ 
+		stage ('SCM Check Out'){
+			steps {
+				git url: 'https://github.com/walij/msgfw2.0_Demo.git'
+			}
+		}
+		stage ('Run Smoke Test') { 
+			steps {
+				bat label: '', script: 'java -jar sampleCICDProcess.jar'
+			}
+		} 
+		stage ('Publish Report') { 
+			steps {
+				publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'Report', reportFiles: 'ExecutionReport.html', reportName: 'Smoke Test Report', reportTitles: ''])
+			}
+		} 
+	}
+}
