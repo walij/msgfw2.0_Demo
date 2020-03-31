@@ -44,7 +44,7 @@ stage ('Docker Build') {
 
  
 steps {
-
+bat label: '', script: 'cd C:\\DOCKER\\MSGFW2.0\\msg.Testframework_cs'
  
 bat label: '', script: 'docker build -t msgfw2.0 .'
 
