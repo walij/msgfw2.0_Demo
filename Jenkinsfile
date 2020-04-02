@@ -15,6 +15,7 @@ pipeline {
                                        }
                                             }
                                     } 
+    try{
            stage ('MSGFW2.0 Unit Test Execution') { 
                                  steps {
                                          dir('C:\\\\DOCKER\\\\MSGFW2.0')
@@ -22,8 +23,22 @@ pipeline {
                                      //Command to run image Container
                                       bat label: '', script: 'docker run --rm -v "C:\\Docker\\MSGFW2.0\\Test Results":C:\\app\\msg.Testframework_cs\\TestResults msgfw2.0:test'
                                    }
+                                   sh 'exit 1'
                                        }
                                 }
+    }catch(e) {
+      build_ok = false
+      echo e,toString()
+    }
+    if(build_ok) {
+        currentBuild.result = "SUCCESS"
+    } else {
+        currentBuild.result = "FAILURE"
+      steps {
+                    input('Do you want to proceed?')
+                 }
+    }
                       }
 
             }
+
