@@ -15,7 +15,7 @@ pipeline {
                                        }
                                             }
                                     } 
-    try{
+    
            stage ('MSGFW2.0 Unit Test Execution') { 
                                  steps {
                                          dir('C:\\\\DOCKER\\\\MSGFW2.0')
@@ -26,18 +26,11 @@ pipeline {
                                    sh 'exit 1'
                                        }
                                 }
-    }catch(e) {
-      build_ok = false
-      echo e,toString()
-    }
-    if(build_ok) {
-        currentBuild.result = "SUCCESS"
-    } else {
-        currentBuild.result = "FAILURE"
-      steps {
-                    input('Do you want to proceed?')
+  stage('Confirmation') {
+                 steps {
+                    input('Do you want to Build again ?')
                  }
-    }
+                 }
                       }
 
             }
