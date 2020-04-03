@@ -37,4 +37,9 @@ pipeline {
             echo "Pipeline result: ${currentBuild.result}"
          } 
     }
+	stage ('Publish Report') { 
+			steps {
+				publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'HtmlReport', reportFiles: 'ExecutionReport.html', reportName: 'SmokeTestReport', reportTitles: ''])
+			}
+		} 
 }
