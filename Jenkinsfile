@@ -35,7 +35,8 @@ pipeline {
 	post {
         always {
             echo "Pipeline result: ${currentBuild.result}"
-         } 
+            step([$class: 'XrayImportBuilder', endpointName: '/xunit', importFilePath: 'FrameworkReport.XML', importToSameExecution: 'true', projectKey: 'COV', serverInstance: 'CLOUD-7f86a19a-07b8-4fdb-96c8-abb3bbead4c0'])
+         }
     }
 	
 }
